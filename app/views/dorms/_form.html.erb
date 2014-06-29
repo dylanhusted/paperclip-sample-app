@@ -1,0 +1,24 @@
+<%= form_for(@dorm, html: { :multipart => true }) do |f| %>
+  <% if @dorm.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@dorm.errors.count, "error") %> prohibited this dorm from being saved:</h2>
+
+      <ul>
+      <% @dorm.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :room %><br>
+    <%= f.text_field :room %>
+
+    <%= f.label :avatar, "Room picture" %>
+    <%= f.file_field :avatar %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
